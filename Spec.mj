@@ -1,5 +1,6 @@
 import "io" from 'std';
-import "text" from 'std'
+import "text" from 'std';
+import "serial" from 'std';
 
 fn main(args[]) {
     io->print(msg,"Hello, World");
