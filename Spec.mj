@@ -1,6 +1,10 @@
 import "io" from 'std';
 import "text" from 'std';
 import "serial" from 'std';
+import "ui" from 'std';
+import "http" from 'std';
+import "pattern" from 'std';
+import "web" from 'std';
 
 fn main(args[]) {
     io->print(msg,"Hello, World");
@@ -9,7 +13,7 @@ fn main(args[]) {
 
 // operators 
 = // assignment
-== // comparison
+== // comparison>
 + // addition
 - // subtraction 
 * // multiply 
@@ -102,6 +106,9 @@ int P = U>.return; // U's return value flows into int P
 U* O; // this operation shares U's memory with struct O, which is a conflict of memory (where spaces allocate)
 
 alloc(sizeof(/*class, function or variable*/)); // this bumps the pointer (MoJaro uses a linear allocator for it's memory)
+falloc(sizeof(/*class, function or variable*/)); // this is a targeted missile strike
+return 0; // this exits the application as successful
+return -1; // this exits the application as a failed
 
 // variables
 
@@ -110,6 +117,7 @@ float // 32 bit float
 double // 64 bit float
 char // single character
 string // string 
+bool // boolean
 
 // but MoJaro makes specific variables like integers and strings variable 
 
@@ -131,10 +139,11 @@ const char
 
 const string 
 
+const bool 
+
 const int W : [32] = 111;
 const int H : [64] = 222; 
-const int C : [128] = 333;
-
+const int Y : [128] = 333;
 // text specificity 
 
 f->replace('I', "Penis"); // this replaces the first instance of 'I' in the whole string with penis
@@ -190,3 +199,52 @@ serial->encode(int array_1 : [64] = [MyInFileFunction()>.return;], int array_2 :
      };
   });
 });
+
+
+// http
+fn MyResponseFunction(int req = http->request(MyResponseFunction), match = pattern->match()) {
+ match req->uri()->path()>(http->response && self->result)=>{
+   "/" = req->requestIndex(req,0);
+   "/foo" = req->requestIndex(req,1), fn foo(req);
+   "/bar" = req->requestIndex(req,2), fn bar(req);
+   
+   alloc(sizeof(foo, bar, req)); 
+ };
+
+};
+
+fn addServerHeaders(int response = http->response()) {
+  response->headers()* MyResponseFunction()->req(); // these two will now share the same region memory
+  response->insert(self->CONTENT, self->HeaderValue("text/html"));
+  http->status();
+  return self->status;
+  alloc(sizeof(addServerHeaders));
+
+  fn checkCode() {
+   addServerHeaders()->status = http->StatusCode->OK;
+  }
+};
+
+// ui
+
+fn MyAppUI(int myUi = ui()) {
+  myUi->box(=>{
+   self->box_size[100%];
+   self->max_screen_size[1920,1080];
+   self->min_screen_size[256,144];
+   self->box_color[ #ffffff];
+   self->box_is_hittable = false;
+   self->global_font_family(impact, sans_serif);
+   self->global_font_size[26];
+   
+   myUi->button(self->size[50%], self->position[->left], self->inst_name(const string name = "MyButton1")>(name)=>{
+
+    self->button_is_hittable = true; 
+    self->button_action = web()->sendTo(msg,'https://www.google.com'); 
+    self->hover_action = self->button_shadow(self->drop[40], self->color[ #000000]), self->tooltip(msg,"I am a google button");
+    self->button_text_front(msg, name, "BUTTON");
+   });
+  });
+  
+}
+
