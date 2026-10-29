@@ -1,0 +1,150 @@
+import "io" from 'std';
+import "text" from 'std'
+
+fn main(args[]) {
+    io->print(msg,"Hello, World");
+    return 0;
+}
+
+// operators 
+= // assignment
+== // comparison
++ // addition
+- // subtraction 
+* // multiply 
+/ // division 
+
+&& // Boolean AND
+& // Bitwise AND 
+
+|| // Boolean OR
+| // Bitwise OR 
+
+% // modulo 
+-> // casual/access pointer 
+! // negate 
+
+class MyClass : private {} // file level access of this class 
+
+class myClass : public {} // exported and accessible (similar to import system of JS/TS)
+
+struct MyStruct : private {} // file level access of this struct 
+
+struct myStruct : public {} // exported and accessible 
+
+// inheritence 
+
+class MyNewClass->MyClass {
+
+}
+
+// property structs
+// anonymous/global
+struct I* Property(=>{
+  (void)->/*some value and operation*/;
+});
+
+// can only change the values of MyClass
+struct K* Property((MyClass)=>{
+  (void)->/*Some value and operation*/;
+});
+
+// name property struct 
+struct O* Property((Prop_Name)+(MyClass)=>{
+  (void)->/*Some value and operation*/;
+});
+
+// lambdas 
+
+int x = 10; 
+int y = 5;
+
+// anon lambda
+fn->(x => y * x) // this does not have the >.return modifier 
+
+// from class 
+class U {
+    int i = 9;
+    int o = 8;
+    int u = 10;
+}->(i => o * u)>.return; // boom, the lambdas return value is now part of class U
+
+U->lambda_0; // default indexing of class lambda is 0 
+
+// from function 
+
+fn Y() {
+    int q = 7;
+    int w = 5; 
+    int e = 4;
+}->(q => w + e)>.return;
+
+Y()->lambda_0; 
+
+// all classes and functions have a quick access to their return value 
+U>.return; // that returns the whole of U's return value which is useful in cases like:
+
+int P = U>.return; // U's return value flows into int P
+
+// pointers and SMMM (Smart Manual Memory Management)
+
+// causal pointers are equivalent to dot-notation or double colon, it's just the access pattern
+
+// SMMM pointers are different (suffix '*'), they denote a memory share (part of the Product/Property Model)
+
+U* O; // this operation shares U's memory with struct O, which is a conflict of memory (where spaces allocate)
+
+alloc(sizeof(/*class, function or variable*/)); // this bumps the pointer (MoJaro uses a linear allocator for it's memory)
+
+// variables
+
+int // 16 bit int
+float // 32 bit float
+double // 64 bit float
+char // single character
+string // string 
+
+// but MoJaro makes specific variables like integers and strings variable 
+
+int v : [32] = 10; // 32 bit integer 
+int n : [64] = 9; // 64 bit integer
+int m : [128] = 11; // 128 bit integer 
+
+string f : [] = "I love It" // the compiler automatically fills that length array with your text, since a string variable is just a fancy long char
+
+// constant variables 
+
+const int // 16 bit int that cannot be changed
+
+const float 
+
+const double 
+
+const char 
+
+const string 
+
+const int W : [32] = 111;
+const int H : [64] = 222; 
+const int C : [128] = 333;
+
+// text specificity 
+
+f->replace('I', "Penis"); // this replaces the first instance of 'I' in the whole string with penis
+f->replaceAll('l', "IOU");
+f->regexp(const string = [/cdbfg/]->()=>{
+  if (f contains string) {
+    f->delete(string); // this gets rid of all of those characters if you want to get rid of words
+    f->delete_w(string); // now it deletes any word with those characters.
+  }
+});
+
+// all strings have text based operations including at 
+
+if ("fuck" == f->at(-1)) {
+    throw errno_t; 
+    io->err(msg, "NO SWEARING!!!");
+    f->replaceAll('fuck', "f***");
+}; // as an example
+
+// not finished
