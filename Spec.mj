@@ -13,6 +13,10 @@ fn main(args[]) {
 - // subtraction 
 * // multiply 
 / // division 
+> // more than
+< // less than
+>= // more than equals 
+<= // less than equals 
 
 && // Boolean AND
 & // Bitwise AND 
@@ -23,6 +27,8 @@ fn main(args[]) {
 % // modulo 
 -> // casual/access pointer 
 ! // negate 
+++ // increment
+-- // decrement
 
 class MyClass : private {} // file level access of this class 
 
@@ -146,5 +152,3 @@ if ("fuck" == f->at(-1)) {
     io->err(msg, "NO SWEARING!!!");
     f->replaceAll('fuck', "f***");
 }; // as an example
-
-// not finished
