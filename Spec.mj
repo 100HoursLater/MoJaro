@@ -152,3 +152,14 @@ if ("fuck" == f->at(-1)) {
     io->err(msg, "NO SWEARING!!!");
     f->replaceAll('fuck', "f***");
 }; // as an example
+
+// for loops
+// new var
+for(int x = 0; x < 10; x++) {
+ // do something
+};
+
+// existing var
+for(v; v < 9; v++) {
+    // do something
+};
