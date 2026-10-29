@@ -163,3 +163,29 @@ for(int x = 0; x < 10; x++) {
 for(v; v < 9; v++) {
     // do something
 };
+
+// alloc vs falloc
+
+alloc(sizeof(Y, O, U)); // a function, struct and class now occupy the arena 
+
+falloc(sizeof(Y, O, U)); // this clears those pointers from memory and puts a free sign on their previous spots in the arena. 
+
+// memory in more detail
+// MoJaro uses non shared memory arena, each thread spawns it's own. 
+// serialisation between functions
+
+fn MyInFileFunction() {
+  // do something
+};
+
+serial->encode(int array_1 : [64] = [MyInFileFunction()>.return;], int array_2 : [64] = [MyExternalFunction()>.return;]>()=>{
+  serial->share(array_1 + array_2);
+  serial->decode(=>{
+     if (!array_1 && array_1 == null) {
+       falloc(sizeof(array_1));
+     };
+     if (!array_2 && array_2 == null) {
+       falloc(sizeof(array_2));
+     };
+  });
+});
