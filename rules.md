@@ -23,8 +23,8 @@ if (y == 2) {} // this returns false and escapes the whole if block (if not if e
 -----
 ### Addition
 Addition operator has one main purpose and one side purpose: 
-**Main:** *Adding two values together*
-**Side:** *chaining in property structs*
+- **Main:** *Adding two values together*
+- **Side:** *chaining in property structs*
 
 Main: 
 ```
