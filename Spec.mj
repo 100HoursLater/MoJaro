@@ -228,7 +228,7 @@ fn addServerHeaders(int response = http->response()) {
 // ui
 
 fn MyAppUI(int myUi = ui()) {
-  myUi->box(=>{
+  myUi->box((const string name_0)=>{
    self->box_size[100%];
    self->max_screen_size[1920,1080];
    self->min_screen_size[256,144];
@@ -236,14 +236,16 @@ fn MyAppUI(int myUi = ui()) {
    self->box_is_hittable = false;
    self->global_font_family(impact, sans_serif);
    self->global_font_size[26];
-   
+
    myUi->button(self->size[50%], self->position[->left], self->inst_name(const string name = "MyButton1")>(name)=>{
 
     self->button_is_hittable = true; 
     self->button_action = web()->sendTo(msg,'https://www.google.com'); 
     self->hover_action = self->button_shadow(self->drop[40], self->color[ #000000]), self->tooltip(msg,"I am a google button");
     self->button_text_front(msg, name, "BUTTON");
+    alloc(sizeof(name));
    });
+   alloc(sizeof(name_0));
   });
   
 }
