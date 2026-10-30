@@ -191,10 +191,10 @@ fn MyInFileFunction() {
 serial->encode(int array_1 : [64] = [MyInFileFunction()>.return;], int array_2 : [64] = [MyExternalFunction()>.return;]>()=>{
   serial->share(array_1 + array_2);
   serial->decode(=>{
-     if (!array_1 && array_1 == null) {
+     if (!array_1 || array_1 == null) {
        falloc(sizeof(array_1));
      };
-     if (!array_2 && array_2 == null) {
+     if (!array_2 || array_2 == null) {
        falloc(sizeof(array_2));
      };
   });
