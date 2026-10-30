@@ -183,6 +183,7 @@ falloc(sizeof(Y, O, U)); // this clears those pointers from memory and puts a fr
 // memory in more detail
 // MoJaro uses non shared memory arena, each thread spawns it's own. 
 // serialisation between functions
+// when a construct, class, function or variable is falloc'd, pointers going to it's memory address are killed to prevent use-after-free
 
 fn MyInFileFunction() {
   // do something
