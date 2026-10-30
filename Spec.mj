@@ -125,7 +125,15 @@ bool // boolean
 
 int v : [32] = 10; // 32 bit integer 
 int n : [64] = 9; // 64 bit integer
-int m : [128] = 11; // 128 bit integer 
+int m : [128] = 11; // 128 bit integer
+
+// unsigned ints 
+
+int i : [u8] = 10; // 8-bit integer, unsigned
+int h : [u] = 10; // 16-bit default integer, unsigned
+int a : [u32] = 10; // 32-bit integer, unsigned 
+int t : [u64] = 10; // 64-bit integer, unsigned 
+int e : [u128] = 10; // 128-bit integer, unsigned
 
 string f : [] = "I love It" // the compiler automatically fills that length array with your text, since a string variable is just a fancy long char
 
