@@ -239,7 +239,7 @@ fn MyAppUI(int myUi = ui()) {
    self->global_font_family(impact, sans_serif);
    self->global_font_size[26];
 
-   myUi->button(self->size[50%], self->position[->left], self->inst_name(const string name = "MyButton1")>(name)=>{
+   myUi->button(self->size[50%], self->position[left], self->inst_name(const string name = "MyButton1")>(name)=>{
 
     self->button_is_hittable = true; 
     self->button_action = web()->sendTo(msg,'https://www.google.com'); 
