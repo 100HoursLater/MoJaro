@@ -228,8 +228,8 @@ outside of a for loop:
 ```
 int x = 5; 
 
-int a = x++; // x becomes 4 and a gets a 5
-int b = ++x; // b gets 4 and x becomes 4
+int a = x--; // x becomes 4 and a gets a 5
+int b = --x; // b gets 4 and x becomes 4
 ```
 
 -----
