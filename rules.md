@@ -4,8 +4,8 @@
 -----
 ### Assignment
 Assignment goes right to left in all cases 
-`int x = 10;` integer x has 10 
-` int o = fn fuction() {// do something}>.return;` integer o now has the return value of function **fuction**
+- `int x = 10;` integer x has 10 
+- ` int o = fn fuction() {// do something}>.return;` integer o now has the return value of function **fuction**
 
 ------
 
