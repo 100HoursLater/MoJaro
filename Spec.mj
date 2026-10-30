@@ -121,6 +121,7 @@ string // string
 bool // boolean
 
 // but MoJaro makes specific variables like integers and strings variable 
+// explicit bit-width
 
 int v : [32] = 10; // 32 bit integer 
 int n : [64] = 9; // 64 bit integer
@@ -251,4 +252,11 @@ fn MyAppUI(int myUi = ui()) {
   });
   
 }
+
+// arrays 
+int my_arr_0 : [8] = [1,2,3]; // an array of 8-bit integers 
+int my_arr_1 = [1,2,3]; // an array of 16-bit integers 
+int my_arr_2 : [32] = [1,2,3]; // an array of 32-bit integers
+int my_arr_3 : [64] = [1,2,3]; // an array of 64-bit integers
+int my_arr_4 : [128] = [1,2,3]; // an array of 128-bit integers
 
