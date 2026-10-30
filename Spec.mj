@@ -268,3 +268,8 @@ int my_arr_2 : [32] = [1,2,3]; // an array of 32-bit integers
 int my_arr_3 : [64] = [1,2,3]; // an array of 64-bit integers
 int my_arr_4 : [128] = [1,2,3]; // an array of 128-bit integers
 
+// exiting 
+
+return {MyAppUI, my_arr_0, MyInFileFunction}; // these are now avaliable for importation into other .mj files 
+return 0; // exits the application with success
+
