@@ -70,10 +70,10 @@ i * p // (10+10+10) = 30
 ### division 
 Division operator (/) has one purpose and that is to divide a value using another value 
 ```
-int i = 3; 
+int i = 6; 
 int p = 2;
 
-i / p // = 6 
+i / p // = 3 
 ```
 
 -----
@@ -209,8 +209,8 @@ outside of a for loop:
 ```
 int x = 5; 
 
-int a = x++; // x becomes 6 and a gets a 6
-int b = ++x; // b gets 6 and x becomes 7
+int a = x++; // x becomes 6 and a gets a 5
+int b = ++x; // b gets 7 and x becomes 7
 ```
 
 -----
