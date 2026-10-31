@@ -1,0 +1,26 @@
+import "io" from 'std';
+
+fn printFibonacci(int n) {
+    alloc(sizeof(n));
+    int first = 0, second = 1, next;
+    if (n >= 1) {io->print(msg,first)};
+    if (n >= 2) {io->print(msg,second)};
+
+    alloc(sizeof(first, second, next));
+
+    for(int i = 3; i <= n; i++) {
+        next = first + second;
+        io->print(msg,next);
+        first = second;
+        second = first;
+    };
+
+    return {n, first, second, next};
+};
+
+fn main() {
+    n = 9;
+    printFibonacci(n);
+    falloc(sizeof(n, first, second, next));
+    return 0;
+};
