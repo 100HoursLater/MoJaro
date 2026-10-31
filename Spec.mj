@@ -268,6 +268,23 @@ int my_arr_2 : [32] = [1,2,3]; // an array of 32-bit integers
 int my_arr_3 : [64] = [1,2,3]; // an array of 64-bit integers
 int my_arr_4 : [128] = [1,2,3]; // an array of 128-bit integers
 
+// array access patterns
+
+my_arr_0[0] // that has accessed member 0 of the array 
+
+int bodies = [i]; //16 bit
+
+struct world : public {
+ bodies;
+};
+
+world->bodies[i]; // that has accessed member i of the array
+
+
+
+
+
+
 // exiting 
 
 return {MyAppUI, my_arr_0, MyInFileFunction}; // these are now avaliable for importation into other .mj files 
