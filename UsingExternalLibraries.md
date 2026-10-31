@@ -23,7 +23,7 @@ as such it would be as simple as:
 
 and lets say that `.h` has something to do with physics:
 
-``` C
+``` cpp
 import "Physics" from 'config';
 import "serial" from 'std';
 import "io" from 'std';
