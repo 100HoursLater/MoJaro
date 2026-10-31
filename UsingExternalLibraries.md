@@ -25,7 +25,6 @@ and lets say that `.h` has something to do with physics:
 
 ``` cpp
 import "Physics" from 'config';
-import "serial" from 'std';
 import "io" from 'std';
 import "enum" from 'std';
 
