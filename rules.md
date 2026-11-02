@@ -10,7 +10,7 @@ Assignment goes right to left in all cases
 ------
 
 ### Comparison
-Comparison goes right to left in all cases and has an implicit boolean
+ Comparison has an implicit boolean
 ```
 int x = 10; 
 if (x == 10) {} // this return true and the block continues 
