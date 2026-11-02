@@ -178,8 +178,8 @@ Modulo Operator (%) has one purpose, has the same sign as the dividend
  };
 
 fn MyOtherFunction() {
- MyFunction->i; 
- MyFunction->u;
+ MyFunction()->i; 
+ MyFunction()->u;
 }
 ```
 -----
