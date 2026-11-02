@@ -23,8 +23,10 @@ and it also supports different arguments inside of its `sizeof` (comma separated
 
 ### Rule 4 : Causal Access Pointers behave like dot-notation in JS, Java and C#
 - it **is** the access operator, but its memory rules is simple: 
-  a. what you don't reference, you don't pay for 
-  b. underneath the autocompletion and English reference name(s), it is a memory address 
+   <ol type="a">
+   <li>what you don't reference, you don't pay for</li>
+   <li>underneath the autocompletion and English reference name(s), it is a memory address</li>
+   </ol>
 
 -----
 
