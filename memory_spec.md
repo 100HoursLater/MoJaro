@@ -16,7 +16,7 @@
 
 ### Rule 3 : alloc and falloc (IMPORTANT) 
 - `alloc` : allocation, each thread has its own arena, alloc bumps the point and supports multiple different arguments inside of it's `sizeof` (comma seperated chaining)
-- `falloc` : free-allocation, falloc is like a targeted missile strike, it only deletes the reference from memory and pointers to exactly what you put in its `sizeof` arguments-
+- `falloc` : free-allocation, falloc is like a targeted missile strike, it only deletes the reference from memory and pointers to exactly what you put in its `sizeof` arguments
 and it also supports different arguments inside of its `sizeof` (comma separated chaining)
 
 -----
