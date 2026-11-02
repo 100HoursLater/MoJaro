@@ -46,7 +46,7 @@ struct myStruct : public {} // exported and accessible
 
 // inheritence 
 
-class MyNewClass->MyClass {
+class MyNewClass extends MyClass {
 
 }
 
