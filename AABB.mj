@@ -23,7 +23,7 @@ class AABB {
         alloc(sizeof(axis, Points, Box));
 
         for(math->size_t->integer i = 1; i < count; i++) {
-            for(int axis; axis < 3; axis++) {
+            for(int axis = 0; axis < 3; axis++) {
                 if (Points[i]+[axis] < StructAABB->min[axis]) {
                     StructAABB->min[axis] = Points[i]+[axis];
                 };
