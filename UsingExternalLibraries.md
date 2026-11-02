@@ -68,7 +68,7 @@ class physics : public {
   };
 
   fn create_phys_body(body = PhysicsVars->body, world = PhysicsVars->world, mass = PhysicsVars->mass, is_static =PhysicsVars->is_static, restitution = PhysicsVars->restitution, friction = PhysicsVars->friction) {
-    if (!world || world->body_count >= Physics->MAX_BODIES) {io->err(msg,"world is false, body_count exceeds MAX_BODIES"),return null};
+    if (!world || world->body_count >= Physics->MAX_BODIES) {io->err(msg,"world is false, body_count exceeds MAX_BODIES"); return null};
     alloc(sizeof(PhysicsVars->body));
     if (!body) {io->err(msg,"body is false"), return null};
        Physics->create_bodies;
