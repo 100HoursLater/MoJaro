@@ -207,10 +207,14 @@ for(int i = 0; i < 10; i++) {} // as this loop runs, i gets 1 added to it per it
 outside of a for loop:
 
 ```
+// Post-Increment
 int x = 5; 
 
 int a = x++; // x becomes 6 and a gets a 5
-int b = ++x; // b gets 7 and x becomes 7
+
+// Pre-Increment
+int y = 5;
+int b = ++y; // b gets 7 and x becomes 7
 ```
 
 -----
@@ -226,10 +230,14 @@ for(int i = 0; i < 10; i--) {} // as this loop runs, i gets 1 gets subtracted to
 outside of a for loop:
 
 ```
+// Post-Decrement
 int x = 5; 
 
 int a = x--; // x becomes 4 and a gets a 5
-int b = --x; // b gets 4 and x becomes 4
+
+// Pre-Decrement
+int y = 5;
+int b = --y; // b gets 4 and x becomes 4
 ```
 
 -----
