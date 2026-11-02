@@ -1,0 +1,71 @@
+import "math" from 'std';
+
+class AABB {
+
+    struct StructAABB {
+        float min = {x,y,z, axis};
+        float max = {x,y,z, axis};
+        bool box;
+        const float points = {1};
+    };
+
+    alloc(sizeof(StructAABB));
+
+    bool fn aabb_from_point(Box = StructAABB->box, Points = StructAABB->points, math->size_t->integer count) {
+
+        if (Box == null || Points == null || count == 0) {return false};
+
+        for(int axis = 0; axis < 3; axis++) {
+            StructAABB->min[axis] = Points[0]+[axis];
+            StructAABB->max[axis] = Points[0]+[axis];
+        };
+
+        alloc(sizeof(axis, Points, Box));
+
+        for(math->size_t->integer i = 1; i < count; i++) {
+            for(int axis; axis < 3; axis++) {
+                if (Points[i]+[axis] < StructAABB->min[axis]) {
+                    StructAABB->min[axis] = Points[i]+[axis];
+                };
+
+                if (Points[i]+[axis] > StructAABB->max[axis]) {
+                    StructAABB->max[axis] = Points[i]+[axis];
+                };
+            };
+            return true;
+        };
+
+        alloc(sizeof(i));
+        return {Box, Points, count};
+    };
+
+    bool fn aabb_contains_point(aabb_from_point->Box* box, aabb_from_point->Points* points[3]) {
+        if (box == null || points == null) {return false};
+
+        for(int axis = 0; axis < 3; axis++) {
+            if (points[axis] < box->min[axis] || points[axis] > box->max[axis]) {
+                return false;
+            };
+        };
+
+        return {box, points, axis};
+
+        return true;
+    };
+
+    bool fn aabb_intersects(const int a = StructAABB, const int b = StructAABB) {
+        if (a == null || b == null) {return false};
+
+        for(int axis = 0; axis < 3; axis++) {
+            if (a->max[axis] < b->min[axis] || a->min[axis] > b->max[axis]) {
+                return false;
+            };
+        };
+        alloc(sizeof(a, b, axis));
+        return true;
+    };
+
+    falloc(sizeof(a,b,axis,StructAABB,Box,Points));
+
+    return 0;
+};
