@@ -32,11 +32,11 @@ class AABB {
                     StructAABB->max[axis] = Points[i]+[axis];
                 };
             };
-            return true;
         };
 
         alloc(sizeof(i));
         return {Box, Points, count};
+        return true;
     };
 
     bool fn aabb_contains_point(aabb_from_point->Box* box, aabb_from_point->Points* points[3]) {
