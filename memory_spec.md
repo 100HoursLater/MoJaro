@@ -9,7 +9,7 @@
 -----
 
 ### Rule 2 : Threads (IMPORTANT)
-- Interfaces represent the whole program in memory 
+- the file itself represent the whole program in memory 
 - Classes represent each thread (must be serialized in order to communicate with each other) 
 
 -----
