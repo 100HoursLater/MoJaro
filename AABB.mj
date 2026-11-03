@@ -11,7 +11,7 @@ class AABB {
 
     alloc(sizeof(StructAABB));
 
-    bool fn aabb_from_point(Box = StructAABB->box, Points = StructAABB->points, math->size_t->integer count) {
+    bool fn aabb_from_point(Box = StructAABB->box, Points = StructAABB->points, int : [32] count) {
 
         if (Box == null || Points == null || count == 0) {return false};
 
@@ -22,7 +22,7 @@ class AABB {
 
         alloc(sizeof(axis, Points, Box));
 
-        for(math->size_t->integer i = 1; i < count; i++) {
+        for(int : [32] i = 1; i < count; i++) {
             for(int axis = 0; axis < 3; axis++) {
                 if (Points[i]+[axis] < StructAABB->min[axis]) {
                     StructAABB->min[axis] = Points[i]+[axis];
