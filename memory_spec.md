@@ -35,3 +35,19 @@ and it also supports different arguments inside of its `sizeof` (comma separated
 
 ----- 
 
+### Rule 6 : Return 
+- `return 0;` : exits with success and clears the whole program from memory
+- `return -1;` : exits with failure and clears whole program from memory
+
+-----
+
+### Rule 7 : STD modularise
+
+<ol type="a">
+<li>each component of the std-lib is modular, as such if you import say `io`, it will only compile `io` alongside your program, alongside Rule 4.1(WYDR,YDPF)</li>
+</ol>
+
+----- 
+
+
+
