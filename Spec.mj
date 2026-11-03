@@ -123,6 +123,7 @@ bool // boolean
 // but MoJaro makes specific variables like integers and strings variable 
 // explicit bit-width
 
+int b : [8] = 10; // 8 bit integer
 int v : [32] = 10; // 32 bit integer 
 int n : [64] = 9; // 64 bit integer
 int m : [128] = 11; // 128 bit integer
