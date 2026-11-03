@@ -1,5 +1,3 @@
-import "math" from 'std';
-
 class AABB {
 
     struct StructAABB {
