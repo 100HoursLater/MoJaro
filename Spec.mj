@@ -104,7 +104,7 @@ int P = U>.return; // U's return value flows into int P
 
 // SMMM pointers are different (suffix '*'), they denote a memory share (part of the Product/Property Model)
 
-U* O; // this operation shares U's memory with struct O, which is a conflict of memory (where spaces allocate)
+U* O; // this operation shares U's memory with struct O, which is a conflict of memory (where spaces allocate), it also Micro Inherits (Left-to-Right)
 
 alloc(sizeof(/*class, function or variable*/)); // this bumps the pointer (MoJaro uses a linear allocator for it's memory)
 falloc(sizeof(/*class, function or variable*/)); // this is a targeted missile strike
