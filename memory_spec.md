@@ -30,3 +30,8 @@ and it also supports different arguments inside of its `sizeof` (comma separated
 
 -----
 
+### Rule 5 : Semicolon 
+- Semicolon (;) is the statement terminator and also represents where a block ends.
+
+----- 
+
