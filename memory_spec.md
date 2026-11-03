@@ -49,5 +49,10 @@ and it also supports different arguments inside of its `sizeof` (comma separated
 
 ----- 
 
+### Rule 8 : Memory Sharing and Micro Inheritence
+- suffix `*` (`Left* right`) is memory sharing, both `Left` and `right` occupy the same memory space
+- it also allows for Micro Inheritance, where `Left` shares it things with `right`
+----- 
+
 
 
