@@ -257,3 +257,25 @@ fn myFuction(int x = 10) {
 }
 ```
 ------
+
+### base
+Base keyword (base) has one purpose, and that is base always points to the base construct you are currently inside of.
+
+```
+class myclass {
+int MYINT;
+float MYFLOAT;
+fn myfunction() {
+ int myfavint = base->MYINT; // points to myclass
+ float myfavfloat = base->MYFLOAT; // points to myclass
+ fn myotherfunction() {
+ int continue = base->myfavint // points to myfunction
+  struct mystruct {
+   base->continue; // points to myotherfunction
+  };
+ };
+};
+};
+```
+
+------
