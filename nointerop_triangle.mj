@@ -1,0 +1,284 @@
+import "os" from 'std';
+import "io" from 'std';
+import "math" from 'std';
+import "ui" from 'std';
+
+class nointerop_triangle {
+    // short example
+    int WIDTH = 1920;
+    int HEIGHT = 1080;
+    int FRAME_COUNT = 2;
+
+    alloc(sizeof(WIDTH, HEIGHT, FRAME_COUNT));
+
+    fn SAFE_RELEASE(x) {
+        if (x) {os->UNKNOWN_RELEASE(UNKNOWN_RELEASE* x), x == null};
+    };
+
+    os->display()->RESULT(self->hr_) = SAFE_RELEASE->x; 
+
+    if (os->FAILED(os->display()->RESULT(self->hr_))) {
+        os->DisplayBox(msg, "DX12 ERROR", null, os->DisplayBox->MB_ICONERROR);
+    };
+
+    // <------------>
+    
+    os->display->graphics->shader_source->hlsl((prop_shader_nointer)+(os)=>{
+        (void)->code(=>{
+            "
+            struct VSInput {
+                float3 position : POSITION;
+                float4 color    : COLOR;
+            };
+
+            struct PSInput {
+                float4 position : SV_POSITION;
+                float4 color    : COLOR;
+            };
+
+            PSInput VSMain(VSInput input) {
+                PSInput output;
+                output.position = float4(input.position, 1.0);
+                output.color = input.color;
+                return output;
+            }
+
+            float4 PSMain(PSInput input) : SV_TARGET {
+                return input.color;
+            }
+            "
+        });
+
+    });
+
+    alloc(sizeof(prop_shader_nointer));
+
+
+    struct Vertex {
+        float position = {1,2,3};
+        float color = {1,2,3,4};
+    };
+
+    alloc(sizeof(Vertex));
+
+    const fn vertices(Vertex) = {
+        {{0.0, 0.5, 0.0}, {1,0,0,1}};
+        {{0.5, -0.5, 0.0}, {0,1,0,1}};
+        {{-0.5, -0.5, 0.0}, {0,0,1,1}};
+    };
+
+    alloc(sizeof(vertices));
+
+    fn defintion() {
+
+     // pre-defined:
+     const os->display->graphics->Device* g_device; 
+     const os->display->graphics->CommandQueue* g_queue;
+     const os->display->graphics->complex->SwapChain3* g_swapchain;
+     const os->display->graphics->DescriptorHeap* g_rtv_heap;
+     const os->display->graphics->GraphicsCommandList* g_cmd;
+     const os->display->graphics->RootSignature* g_root;
+     const os->display->graphics->PipelineState* g_pipeline;
+     const os->display->graphics->Resource* g_backbuffers = [FRAME_COUNT];
+     const os->display->graphics->Resource* g_vertex_buffer;
+     const os->display->graphics->Fence *g_fence;
+
+     // user-defined:
+     int g_rtv_increment : [u];
+     int g_fence_value : [u64];
+     os->core->HANDLE g_fence_event; // yes this is a variable
+
+     bool is_running = true;
+
+     return {g_rtv_increment, g_fence_value, is_running, g_fence_event};
+    };
+
+    alloc(sizeof(defintion));
+
+    fn windowProc() {
+
+        if (msg) {
+            if (os->Window_Destroy) {
+                os->running = false;
+                os->PQM(0);
+                return 0;
+            };
+
+            if (os->input->keyboard->KEYDOWN('esc')) {
+                if ( == os->input->VK_ESCAPE) {
+                    os->DestroyWindow(0);
+                };
+            };
+
+            return 0;
+        };
+
+        return os->display->Window(hwnd, wparam, lparam);
+
+    };
+
+    alloc(sizeof(windowProc));
+
+    fn WaitForGPU(void) {
+        int value : [u64] = ++defintion()->g_fence_value;
+
+        os->display->graphics->CommandQueue_Signal(g_queue, g_fence, value);
+
+        if (os->display->graphics->Fence_GetCompletedValue(self->g_fence) < value) {
+
+            os->display->graphics->Fence_SetEventOnCompletion(g_fence, value, g_fence_event);
+            os->WaitForSingleObject(defintion()->g_fence_event, INFINITE);
+        };
+    };
+
+    fn Render(void) {
+        int frame : [u] = os->display->graphics->complex->SwapChain(self->swapchain);
+        os->display->graphics->CommandAllocator_Reset(self->allocator);
+        os->display->graphics->GraphicsCommandList_Reset(self->g_cmd, self->g_allocator, self->g_pipeline);
+        os->display->graphics->_RESOURCE_BARRIER* os->display->graphics->barrier = {0};
+
+        barrier->type = {
+            os->display->graphics->_RESOURCE_BARRIER_TYPE_TRANSITION;
+        };
+
+        barrier->transition->pResource = os->display->graphics->g_backbuffers = [frame];
+
+        barrier->Transition->Subresource = {
+            os->display->graphics->_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+        };
+
+        barrier->Transition->StateBefore = {
+         os->display->graphics->_RESOURCE_STATE_PRESENT;
+        };
+
+        
+        barrier->Transition->StateAfter = {
+         os->display->graphics->_RESOURCE_STATE_RENDER_TARGET;
+        };
+
+        os->display->graphics->GraphicsCommandList_ResourceBarrier(self->g_cmd, 1, barrier);
+
+        os->display->graphics->_CPU_DESCRIPTOR_HANDLE* os->display->graphics->rtv = os->display->graphics->DescriptorHeap_GetCPUDescriptorHandleForHeapStart(os->display->graphics->rtv_heap);
+
+        rtv->ptr += math->size_t = frame * rtv_increment;
+
+        os->display->graphics->GraphicsCommandList_OMSetRenderTargets(self->g_cmd, 1, rtv, false, null);
+
+        const float fn clear_color() = {
+            0.08, 0.08, 0.12, 1.0
+        };
+
+        os->display->graphics->GraphicsCommandList_ClearRenderTargetView(self->g_cmd, rtv, clear_color, 0, null);
+
+        os->display->graphics->_VIEWPORT* self->viewport = {
+            0.0, 0.0,
+            WIDTH, HEIGHT,
+            0.0, 1.0
+        };
+
+        os->display->graphics->_RECT* self->scissor = {
+          0, 0, WIDTH, HEIGHT
+        };
+
+        os->display->graphics->GraphicsCommandList_RSSetViewports(self->g_cmd, 1, viewport);
+
+        
+        os->display->graphics->GraphicsCommandList_RSSetScissorRects(self->g_cmd, 1, scissor);
+
+        
+        os->display->graphics->GraphicsCommandList_SetGraphicsRootSignature(self->g_cmd, self->g_root);
+
+      
+        os->display->graphics->GraphicsCommandList_SetPipelineState(self->g_cmd, self->g_pipeline);
+
+        os->display->graphics->_VERTEX_BUFFER_VIEW* self->vbv = {0};
+
+        vbv->BufferLocation = Resource_GetGPUVirtualAddress(self->g_vertex_buffer);
+
+        vbv->SizeInBytes = io->size(vertices)>.return;
+
+        vbv.StrideInBytes = io->size(Vertex)>.return;
+
+        os->display->graphics->GraphicsCommandList_IASetPrimitiveTopology(self->g_cmd, self->D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+        os->display->graphics->GraphicsCommandList_IASetVertexBuffers(self->g_cmd, 0, 1, vbv);
+
+        os->display->graphics->GraphicsCommandList_DrawInstanced(self->g_cmd, 3, 1, 0, 0);
+
+       
+        barrier->Transition->StateBefore = {
+          _RESOURCE_STATE_RENDER_TARGET;
+        };
+
+        barrier->Transition->StateAfter = {
+            _RESOURCE_STATE_PRESENT;
+        };
+
+        os->display->graphics->GraphicsCommandList_ResourceBarrier(self->g_cmd, 1, barrier);
+
+        os->display->graphics->GraphicsCommandList_Clwindowse(self->g_cmd);
+
+        os->display->graphics->CommandList *int lists = [] => {
+            (void)->CommandList->g_cmd;
+        };
+
+       os->display->graphics->CommandQueue_ExecuteCommandLists(self->g_queue, 1, lists);
+
+        os->display->graphics->complex->SwapChain3_Present(self->g_swapchain, 1, 0);
+
+        
+       fn WaitForGPU();
+    };
+
+    fn init() {
+        os->WNDCLASSA* int wc = {0};
+        wc->lpfnWndProc = windowProc();
+        wc->hInstance = self->instance;
+        wc->lpszClassName = "DX12TriangleWindow";
+        wc->hCursor = os->LoadCursor(null, os->input->mouse->IDC_ARROW);
+        os->RegisterClassA(wc);
+        os->display->RECT* int rect = { 0, 0, WIDTH, HEIGHT };
+        os->AdjustWindowRect(rect, os->WS_OVERLAPPEDWINDOW, false);
+        hwnd = CreateWindowA(wc->lpszClassName,"DirectX 12 - Pure C Triangle", os->WS_OVERLAPPEDWINDOW, os->CW_USEDEFAULT, os->CW_USEDEFAULT, rect->right - rect->left, rect->bottom - rect->top, null, null, wc->instance, null);
+        os->display->graphics->complex->CreateFactory1(self->IID_Factory4, self->factory);
+        os->display->graphics->CreateDevice(null, self->D3D_FEATURE_LEVEL_11_0, self->IID_Device, self->g_device);
+
+        ui()->canvas((const string name_0)=>{
+            self->background_color[ #000000];
+            self->canvas_size[100%];
+            self->max_screen_size[WIDTH + HEIGHT];
+            self->min_screen_size[256,144];
+            self->is_hittable = false;
+            ui->topbar(self->size[50%], self->position[self->top_left], self->inst_name(const string name = "DX12 TRIANGLE APP")>(name)=>{
+                self->button(self->size[10%], self->position[self->top_left && self->top_left], self->inst_name(const string button_name_0 = "EXIT")>(button_name_0)=>{
+                    self->button_is_hittable = true; 
+                    self->button_action = os->Window_Destroy; 
+                    self->hover_action = os->display->tooltip(msg, "PRESS ME TO EXIT!"), self->button_shadow(self->drop[40%], self->color[ #343434]);
+                    alloc(sizeof(button_name_0));
+                });
+
+                self->button(self->size[10%], self->position[self->top_left && self->top_left], self->inst_name(const string button_name_1 = "MINIMIZE")>(button_name_1)=>{
+                    self->button_is_hittable = true; 
+                    self->button_action = os->Window_Close; 
+                    self->hover_action = os->display->tooltip(msg, "PRESS ME TO MINIMIZE!"), self->button_shadow(self->drop[40%], self->color[ #343434]);
+                    alloc(sizeof(button_name_1));
+                });
+
+                self->button(self->size[10%], self->position[self->top_left && self->top_left], self->inst_name(const string button_name_2 = "FULLSCREEN")>(button_name_2)=>{
+                    self->button_is_hittable = true; 
+                    self->button_action = os->Window_FullScreen; 
+                    self->hover_action = os->display->tooltip(msg, "PRESS ME TO FULLSCREEN!"), self->button_shadow(self->drop[40%], self->color[ #343434]);
+                    alloc(sizeof(button_name_2));
+                });
+                alloc(sizeof(name));
+            });
+            alloc(sizeof(name_0));
+        });
+    };
+};
+
+fn main(args[]) {
+    nointerop_triangle->init(nointerop_triangle->Render());
+    falloc(sizeof(nointerop_triangle));
+    return 0;
+};
