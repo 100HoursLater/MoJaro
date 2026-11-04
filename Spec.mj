@@ -34,7 +34,8 @@ fn main(args[]) {
 ! // negate 
 ++ // increment
 -- // decrement
-self // self always points to the immediate construct you are currently inside.
+self // self always points to the immediate construct you are currently inside of (it's nature doesn't meatter, but it class, struct or function)
+base // base always points to the base construct you are currently inside of (it's nature doesn't matter, be it class, struct or function)
 
 class MyClass : private {} // file level access of this class 
 
