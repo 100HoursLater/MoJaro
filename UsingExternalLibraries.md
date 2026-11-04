@@ -90,4 +90,28 @@ class physics : public {
 };
 ```
 
-MoJaro uses Implicit Execution Forwarding, the outer wrapper function has it's own space in that threads arena, but the function call is external so it is forwarded and executed by a C Compiler (if you have one installed)
+MoJaro uses Implicit Execution Forwarding, the outer wrapper function has it's own space in that threads arena, but the function call is external so it is forwarded and executed by a C Compiler (if you have one installed), or HLSL or GLSL
+
+-------
+
+### Multiple Headers:
+
+``` JSON
+{
+    "mojaro.compiler.version": "1.0.0.0",
+    "mojaro.compiler.path": "C:/ProgramData/MoJaroRuntime/bin",
+    "mojaro.compiler.executable": "mjc.exe",
+    "mojaro.output.architecture": "x64", 
+    "mojaro.output.platform": "Win11x64",
+    "mojaro.output.executable": "executable",
+    "mojaro.graphics.shader.interop.hlsl": [
+        "./TriangleShader.hlsl"
+    ],
+    "mojaro.interop.headers": [
+        "d3d12.h",
+        "dxgi1_4.h",
+        "windows.h",
+        {"headers.modifier": "PRE-ALLOC : ALL"}
+    ]
+}
+```
