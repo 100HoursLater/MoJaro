@@ -170,9 +170,9 @@ f->regexp(const string = [/cdbfg/]->()=>{
 // all strings have text based operations including at 
 
 if ("fuck" == f->at(-1)) {
-    throw errno_t; 
-    io->err(msg, "NO SWEARING!!!");
-    f->replaceAll('fuck', "f***");
+ io->err(msg, "NO SWEARING!!!");
+ f->replaceAll('fuck', "f***");
+ throw errno_t;
 }; // as an example
 
 // for loops
