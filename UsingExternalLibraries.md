@@ -10,7 +10,7 @@ as such it would be as simple as:
 {
     "mojaro.external.library.header": "api.h",
     "mojaro.compiler.version": "1.0.0",
-    "mojaro.compiler.path": "C:/Program Files/MoJaroRuntime/bin",
+    "mojaro.compiler.path": "C:/ProgramData/MoJaroRuntime/bin",
     "mojaro.compiler.binary": "mjc.exe",
     "mojaro.code.env_file": "vsc.env",
     "mojaro.internal.package": [
