@@ -293,7 +293,7 @@ Return Keyword (return) has 3 purposes:
 #### make func params public
 ```
 fn myFunction(int u = 10) {
- return {u};
+ return {u}; // or return u;
 };
 
 fn MyOtherFunction() {
