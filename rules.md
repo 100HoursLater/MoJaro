@@ -194,6 +194,10 @@ int i = 15;
 if !(i > p) {} // normally this would be true, but here it's asking if it's NOT that so = false
 ```
 
+Your order also matters:
+- outside (`if !(i > p) {}`) means 'negate the whole condition'
+- inside (`if (!i > p) {}`) means 'negate i'
+
 -----
 
 ### increment 
