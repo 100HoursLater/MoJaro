@@ -283,3 +283,50 @@ fn myfunction() {
 ```
 
 ------
+
+### return
+Return Keyword (return) has 3 purposes: 
+- make function parameters and function variables public (exposed)
+- end a program with a success or failure
+- share return value back into function signature
+
+#### make func params public
+```
+fn myFunction(int u = 10) {
+ return {u};
+};
+
+fn MyOtherFunction() {
+ myFunction()->u;
+};
+```
+
+#### end a program with success or failure
+**success**
+```
+fn main(args[]) {
+ // do something
+ return 0;
+};
+```
+**failure**
+```
+fn main(args[]) {
+ // do something
+ return -1;
+};
+```
+
+#### share return value back into the function signature 
+```
+int to_recieve; 
+
+to_recieve = fn MyFunction() {}>.return; // functions return value gets shared back into the function signature and then that is shared into that integer
+```
+The same also applies to for loops
+
+```
+int to_Recieve;
+
+to_Recieve = for(int i = 1; i <= 100; i++) {}>.return; // the for loops return value gets shared back into it's signature and then it shared into that integer
+```
