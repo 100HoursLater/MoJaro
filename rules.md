@@ -218,7 +218,7 @@ int a = x++; // x becomes 6 and a gets a 5
 
 // Pre-Increment
 int y = 5;
-int b = ++y; // b gets 6 and x becomes 7
+int b = ++y; // b gets 6 and y becomes 6
 ```
 
 -----
