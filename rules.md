@@ -260,6 +260,8 @@ fn myFuction(int x = 10) {
   return self->x; // myFuction
 }
 ```
+
+- self **CANNOT** be chained together
 ------
 
 ### base
@@ -281,7 +283,7 @@ fn myfunction() {
 };
 };
 ```
-
+- base **CANNOT** be chained together
 ------
 
 ### return
