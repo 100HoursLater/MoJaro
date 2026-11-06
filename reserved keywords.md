@@ -15,6 +15,8 @@
 - `const`
 - `self`
 - `base`
+- `if` & `else if` & `else`
+- `for`
 
 ------
 ### Special Restricted:
