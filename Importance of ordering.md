@@ -23,4 +23,6 @@ int B = 2;
 ```
 Nope not valid, MJC will hit the alloc call and throw a null reference error. 
 
+the rule of IOO, is global, your order matters everywhere.
+
 -------------
