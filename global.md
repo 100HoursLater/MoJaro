@@ -4,7 +4,7 @@
 
 -------------
 **Global/Orphaned Code** just means you code is loose inside a class and not inside of a function or struct or Enum, 
-Said code is fine, but from a code organisation strategy, it is not good practice, for a one liner, sure it's fine, but for a large code it is.
+Said code is fine, but from a code organisation strategy, it is not good practice, for a one liner, sure it's fine, but for a large code it isn't.
 
 -------------
 
