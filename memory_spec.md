@@ -41,7 +41,7 @@ and it also supports different arguments inside of its `sizeof` (comma separated
 
 -----
 
-### Rule 7 : STD modularise
+### Rule 7 : STD is modularised
 
 <ol type="a">
 <li>each component of the std-lib is modular, as such if you import say `io`, it will only compile `io` alongside your program, alongside Rule 4.1(WYDR,YDPF)</li>
