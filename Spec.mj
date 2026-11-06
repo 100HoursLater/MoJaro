@@ -3,8 +3,10 @@ import "text" from 'std';
 import "serial" from 'std';
 import "ui" from 'std';
 import "http" from 'std';
-import "pattern" from 'std';
+import "match" from 'std';
 import "web" from 'std';
+import "enum" from 'std';
+import "os" from 'std';
 
 fn main(args[]) {
     io->print(msg,"Hello, World");
@@ -34,8 +36,7 @@ fn main(args[]) {
 ! // negate 
 ++ // increment
 -- // decrement
-self // self always points to the immediate construct you are currently inside of (it's nature doesn't meatter, but it class, struct or function)
-base // base always points to the base construct you are currently inside of (it's nature doesn't matter, be it class, struct or function)
+self // self always points to the immediate construct you are currently inside.
 
 class MyClass : private {} // file level access of this class 
 
@@ -47,11 +48,11 @@ struct myStruct : public {} // exported and accessible
 
 // inheritence 
 
-class MyNewClass extends MyClass {
+class MyNewClass->MyClass {
 
 }
 
-// property structs
+// property structs (also known as mutation struct)
 // anonymous/global
 struct I* Property(=>{
   (void)->/*some value and operation*/;
@@ -105,7 +106,7 @@ int P = U>.return; // U's return value flows into int P
 
 // SMMM pointers are different (suffix '*'), they denote a memory share (part of the Product/Property Model)
 
-U* O; // this operation shares U's memory with struct O, which is a conflict of memory (where spaces allocate), it also Micro Inherits (Left-to-Right)
+U* O; // this operation shares U's memory with struct O, which is a conflict of memory (where spaces allocate)
 
 alloc(sizeof(/*class, function or variable*/)); // this bumps the pointer (MoJaro uses a linear allocator for it's memory)
 falloc(sizeof(/*class, function or variable*/)); // this is a targeted missile strike
@@ -122,20 +123,10 @@ string // string
 bool // boolean
 
 // but MoJaro makes specific variables like integers and strings variable 
-// explicit bit-width
 
-int b : [8] = 10; // 8 bit integer
 int v : [32] = 10; // 32 bit integer 
 int n : [64] = 9; // 64 bit integer
-int m : [128] = 11; // 128 bit integer
-
-// unsigned ints 
-
-int i : [u8] = 10; // 8-bit integer, unsigned
-int h : [u] = 10; // 16-bit default integer, unsigned
-int a : [u32] = 10; // 32-bit integer, unsigned 
-int t : [u64] = 10; // 64-bit integer, unsigned 
-int e : [u128] = 10; // 128-bit integer, unsigned
+int m : [128] = 11; // 128 bit integer 
 
 string f : [] = "I love It" // the compiler automatically fills that length array with your text, since a string variable is just a fancy long char
 
@@ -170,9 +161,9 @@ f->regexp(const string = [/cdbfg/]->()=>{
 // all strings have text based operations including at 
 
 if ("fuck" == f->at(-1)) {
- io->err(msg, "NO SWEARING!!!");
- f->replaceAll('fuck', "f***");
- throw errno_t;
+    throw errno_t; 
+    io->err(msg, "NO SWEARING!!!");
+    f->replaceAll('fuck', "f***");
 }; // as an example
 
 // for loops
@@ -201,8 +192,8 @@ fn MyInFileFunction() {
   // do something
 };
 
-serial->encode(int array_1 : [64] = [MyInFileClass>.return;], int array_2 : [64] = [MyExternalClass>.return;]>()=>{
-  serial->share(array_1 + array_2), alloc(sizeof(array_1, array_2));
+serial->encode(int array_1 : [64] = [MyInFileFunction()>.return;], int array_2 : [64] = [MyExternalFunction()>.return;]>()=>{
+  serial->share(array_1 + array_2);
   serial->decode(=>{
      if (!array_1 || array_1 == null) {
        falloc(sizeof(array_1));
@@ -216,10 +207,10 @@ serial->encode(int array_1 : [64] = [MyInFileClass>.return;], int array_2 : [64]
 
 // http
 fn MyResponseFunction(int req = http->request(MyResponseFunction), match = pattern->match()) {
- match req->uri()->path()>(http->response && self->result)=>{
-   "/" = req->requestIndex(req,0);
-   "/foo" = req->requestIndex(req,1), fn foo(req);
-   "/bar" = req->requestIndex(req,2), fn bar(req);
+ match->req->uri()->path()>(http->response && self->result)=>{
+   "/" = self->req->requestIndex(req,0);
+   "/foo" = self->req->requestIndex(req,1), fn foo(req);
+   "/bar" = self->req->requestIndex(req,2), fn bar(req);
    
    alloc(sizeof(foo, bar, req)); 
  };
@@ -235,7 +226,7 @@ fn addServerHeaders(int response = http->response()) {
 
   fn checkCode() {
    addServerHeaders()->status = http->StatusCode->OK;
-  }
+  };
 };
 
 // ui
@@ -254,41 +245,30 @@ fn MyAppUI(int myUi = ui()) {
 
     self->button_is_hittable = true; 
     self->button_action = web()->sendTo(msg,'https://www.google.com'); 
-    self->hover_action = self->button_shadow(self->drop[40], self->color[ #000000]), self->tooltip(msg,"I am a google button");
+    self->hover_action = self->button_shadow(self->drop[40], self->color[ #000000]), os->display->tooltip(msg,"I am a google button");
     self->button_text_front(msg, name, "BUTTON");
     alloc(sizeof(name));
    });
    alloc(sizeof(name_0));
   });
   
-}
-
-// arrays 
-int my_arr_0 : [8] = [1,2,3]; // an array of 8-bit integers 
-int my_arr_1 = [1,2,3]; // an array of 16-bit integers 
-int my_arr_2 : [32] = [1,2,3]; // an array of 32-bit integers
-int my_arr_3 : [64] = [1,2,3]; // an array of 64-bit integers
-int my_arr_4 : [128] = [1,2,3]; // an array of 128-bit integers
-
-// array access patterns
-
-my_arr_0[0] // that has accessed member 0 of the array 
-
-int bodies = [i]; //16 bit
-
-struct world : public {
- bodies;
 };
 
-world->bodies[i]; // that has accessed member i of the array
+// circular references
+
+enum I {
+  I,
+  Y,
+  W
+};
+
+enum T {
+  O,
+  P,
+  N
+};
 
 
+I && T = I 
 
-
-
-
-// exiting 
-
-return {MyAppUI, my_arr_0, MyInFileFunction}; // these are now avaliable for importation into other .mj files 
-return 0; // exits the application with success
 
