@@ -10,7 +10,7 @@ Said code is fine, but from a code organisation strategy, it is not good practic
 
 ### What about C-Style code?
 
-Sure it is possible in MoJaro to ignore all my warnings and do everything side of flat global structs, but you still need that class and anyways, the normal syntax is just:
+Sure it is possible in MoJaro to ignore all my warnings and do everything inside of flat global structs, but you still need that class and anyways, the normal syntax is just:
 
 - # Head Class
 - ## Functions(s) 
