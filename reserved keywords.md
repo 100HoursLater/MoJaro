@@ -20,6 +20,7 @@
 ### Special Restricted:
 - `int` 
 - `float`
+- `double`
 - `bool`
 - `string`
 - `char`
