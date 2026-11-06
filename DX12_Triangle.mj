@@ -15,7 +15,7 @@ class DX12triangle {
     alloc(sizeof(WIDTH, HEIGHT, FRAME_COUNT));
 
     fn SAFE_RELEASE(x) {
-        if (x) {windows->IUnknown_Release(IUnknown* x), x == null};
+        if (x) {windows->IUnknown_Release(IUnknown* x), x = null};
         return {x};
     };
 
