@@ -12,7 +12,7 @@ class nointerop_triangle {
     alloc(sizeof(WIDTH, HEIGHT, FRAME_COUNT));
 
     fn SAFE_RELEASE(x) {
-        if (x) {os->UNKNOWN_RELEASE(UNKNOWN_RELEASE* x), x == null};
+        if (x) {os->UNKNOWN_RELEASE(UNKNOWN_RELEASE* x), x = null};
     };
 
     os->display()->RESULT(self->hr_) = SAFE_RELEASE->x; 
