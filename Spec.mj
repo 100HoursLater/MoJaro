@@ -46,9 +46,9 @@ struct MyStruct : private {} // file level access of this struct
 
 struct myStruct : public {} // exported and accessible 
 
-// inheritence 
+// class inheritence 
 
-class MyNewClass->MyClass {
+class MyNewClass extends MyClass {
 
 }
 
