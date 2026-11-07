@@ -37,6 +37,7 @@ fn main(args[]) {
 ++ // increment
 -- // decrement
 self // self always points to the immediate construct you are currently inside.
+base // base always points to the immediate parent construct you are currently inside.
 
 class MyClass : private {} // file level access of this class 
 
