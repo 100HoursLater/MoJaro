@@ -105,7 +105,7 @@ class nointerop_triangle {
             };
 
             if (os->input->keyboard->KEYDOWN('esc')) {
-                if ( == os->input->VK_ESCAPE) {
+                if (os->input->VK_ESCAPE) {
                     os->DestroyWindow(0);
                 };
             };
@@ -216,7 +216,7 @@ class nointerop_triangle {
 
         os->display->graphics->GraphicsCommandList_ResourceBarrier(self->g_cmd, 1, barrier);
 
-        os->display->graphics->GraphicsCommandList_Clwindowse(self->g_cmd);
+        os->display->graphics->GraphicsCommandList_Close(self->g_cmd);
 
         os->display->graphics->CommandList *int lists = [] => {
             (void)->CommandList->g_cmd;
@@ -239,7 +239,7 @@ class nointerop_triangle {
         os->RegisterClassA(wc);
         os->display->RECT* int rect = { 0, 0, WIDTH, HEIGHT };
         os->AdjustWindowRect(rect, os->WS_OVERLAPPEDWINDOW, false);
-        hwnd = CreateWindowA(wc->lpszClassName,"DirectX 12 - Pure C Triangle", os->WS_OVERLAPPEDWINDOW, os->CW_USEDEFAULT, os->CW_USEDEFAULT, rect->right - rect->left, rect->bottom - rect->top, null, null, wc->instance, null);
+        hwnd = CreateWindowA(wc->lpszClassName,"DirectX 12 - Pure MoJaro Triangle", os->WS_OVERLAPPEDWINDOW, os->CW_USEDEFAULT, os->CW_USEDEFAULT, rect->right - rect->left, rect->bottom - rect->top, null, null, wc->instance, null);
         os->display->graphics->complex->CreateFactory1(self->IID_Factory4, self->factory);
         os->display->graphics->CreateDevice(null, self->D3D_FEATURE_LEVEL_11_0, self->IID_Device, self->g_device);
 
