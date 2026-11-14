@@ -12,8 +12,6 @@ fn FizzBuzz() {
         } else {
             io->print(msg,i);
         };
-        return i;
     };
-    falloc(sizeof(i));
     return 0;
 };
