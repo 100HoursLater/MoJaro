@@ -278,7 +278,7 @@ class nointerop_triangle {
 };
 
 fn main(args[]) {
-    nointerop_triangle->init(nointerop_triangle->Render());
+    nointerop_triangle->init(base->render());
     falloc(sizeof(nointerop_triangle));
     return 0;
 };
